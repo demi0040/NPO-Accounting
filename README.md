@@ -46,14 +46,11 @@ To set up the project environment and run the application, follow the steps belo
 ### 2. Clone the project:
 - Open your terminal or command prompt.
     - Navigate to the desired directory where you want to clone the project.
-    - Run the following command to clone the backend repository:
+    - Run the following command to clone the repository:
     ```
-    git clone https://github.com/demi0040/Play-Accounting-App-Backend.git
+    git clone [https://github.com/demi0040/Play-Accounting-App-Backend.git](https://github.com/demi0040/NPO-Accounting.git)
     ```
-    - Navigate to project folder and clone the angular project:
-    ```
-    git clone https://github.com/demi0040/angular-accounting.git
-    ```
+    
 
 ### 3. Install the dependencies:
    - Open a new terminal or command prompt window.
