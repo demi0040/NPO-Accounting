@@ -1,0 +1,29 @@
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+}
+
+.app-sidebar {
+    width: 200px;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 200px);
+    overflow: hidden;
+    padding-left: 200px;
+    padding-right: 0;
+}
+
+.app-navbar {
+    height: 64px;
+    background-color: #f2f2f2;
+    box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
+}
+
+.page-content {
+    flex: 1;
+    padding: 16px;
+}

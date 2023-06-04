@@ -1,0 +1,26 @@
+<mat-toolbar>
+    <mat-toolbar-row>
+        <span>{{ getPageTitle() }}</span>
+        <span class="example-spacer"></span>
+
+
+        <button class="account-menu" mat-button [matMenuTriggerFor]="menu">
+            <mat-icon class="acc-icon">account_circle</mat-icon>
+            <span class="acc-text">Account</span>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+                <mat-icon>login</mat-icon>
+                <span>Login</span>
+            </button>
+            <button mat-menu-item>
+                <mat-icon>person_add</mat-icon>
+                <span>Register</span>
+            </button>
+            <button mat-menu-item disabled>
+                <mat-icon>logout</mat-icon>
+                <span>Logout</span>
+            </button>
+        </mat-menu>
+    </mat-toolbar-row>
+</mat-toolbar>

@@ -1,0 +1,8 @@
+<div class="app-confirmation-dialog">
+    <h1 mat-dialog-title>Confirm</h1>
+    <div class="message" mat-dialog-content>{{ data }}</div>
+    <div class="actions" mat-dialog-actions>
+        <button class="yes-button" mat-button (click)="onConfirm()">Yes</button>
+        <button class="no-button" mat-button (click)="onCancel()">No</button>
+    </div>
+</div>

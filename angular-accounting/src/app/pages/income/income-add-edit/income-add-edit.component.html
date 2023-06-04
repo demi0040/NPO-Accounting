@@ -1,0 +1,79 @@
+<div mat-dialog-title>Income Form</div>
+
+<form [formGroup]="incomeForm" (ngSubmit)="onSubmit()">
+
+    <div class="form-content" mat-dialog-content>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Income Category</mat-label>
+                <mat-select formControlName="income_category">
+                    <mat-option value="Donation">Donation</mat-option>
+                    <mat-option value="Governmental">Governmental</mat-option>
+                    <mat-option value="Other">Other</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Payment Method</mat-label>
+                <mat-select formControlName="payment_method">
+                    <mat-option value="Cash">Cash</mat-option>
+                    <mat-option value="Bank">Bank</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+
+            <ng-container *ngIf="getFormControlValue('income_category') !== 'Donation'">
+                <mat-form-field appearance="outline">
+                    <mat-label>Source Name</mat-label>
+                    <input matInput placeholder="Source Name" formControlName="income_source_name">
+                </mat-form-field>
+            </ng-container>
+
+            <ng-container *ngIf="getFormControlValue('income_category') === 'Donation'">
+                <mat-form-field appearance="outline">
+                    <mat-label>Select Donor</mat-label>
+                    <mat-select formControlName="donor_id" (selectionChange)="updateSourceName()">
+                        <mat-option value="new">Add New Donor</mat-option>
+                        <mat-option *ngFor="let donor of donors" [value]="donor.id">{{ donor.first_name }} {{
+                            donor.last_name }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </ng-container>
+
+            <ng-container *ngIf="getFormControlValue('donor_id') === 'new'">
+                <button mat-raised-button color="warn" class="new-donor" type="button"
+                    (click)="openNewDonorDialog()">Add a New Donor</button>
+            </ng-container>
+
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline" floatLabel="always">
+                <mat-label>Amount</mat-label>
+                <input matInput type="number" class="form-promise" placeholder="0" formControlName="income_amount">
+                <span matTextPrefix>$&nbsp;</span>
+                <span matTextSuffix>.00</span>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Date of Income</mat-label>
+                <input matInput [matDatepicker]="picker" placeholder="Ex. MM/DD/YYYY" formControlName="income_date">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Textarea</mat-label>
+                <textarea matInput placeholder="Description" formControlName="description"></textarea>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div mat-dialog-actions class="form-action">
+        <button class="cancel-button" mat-raised-button type="reset">Cancel</button>
+        <button class="save-button" mat-raised-button type="submit">{{data ? 'Update': 'Save'}}</button>
+    </div>
+
+</form>

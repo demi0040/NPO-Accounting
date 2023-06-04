@@ -1,0 +1,52 @@
+.app-confirmation-dialog {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f5f5f5;
+
+    h1 {
+        font-size: 20px;
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    .message {
+        margin-bottom: 20px;
+        color: #555;
+    }
+
+    .actions {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 20px;
+
+        button {
+            margin-left: 10px;
+        }
+
+        button.yes-button {
+            // Yes button background color
+            background-color: #dc3545;
+            // Yes button text color
+            color: #fff;
+
+            // Yes button hover styles
+            &:hover {
+                background-color: #ac2e38;
+            }
+        }
+
+        button.no-button {
+            // No button background color
+            background-color: #667381;
+            // No button text color
+            color: #fff;
+
+            // No button hover styles
+            &:hover {
+                background-color: #232b33;
+            }
+        }
+    }
+}

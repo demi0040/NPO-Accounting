@@ -1,0 +1,33 @@
+mat-toolbar {
+    background-color: #333;
+    color: #fff;
+    padding: 0 20px;
+    margin-bottom: 1px;
+    margin-left: 1px;
+}
+
+mat-toolbar-row {
+    justify-content: space-between;
+}
+
+.account-menu {
+    border: none;
+    background-color: #333;
+}
+
+.account-menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: transparent;
+    color: white;
+}
+
+.acc-icon {
+    margin-right: 5px;
+    font-size: 24px;
+}
+
+.acc-text {
+    font-size: 20px;
+}

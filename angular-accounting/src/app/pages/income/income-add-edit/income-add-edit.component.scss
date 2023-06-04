@@ -1,0 +1,42 @@
+.form-content {
+    padding-top: 5px;
+}
+
+.row {
+    display: flex;
+    gap: 10px;
+
+    mat-form-field {
+        width: 100%;
+    }
+}
+
+.mat-dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 16px;
+}
+
+.cancel-button {
+    background-color: #E53935;
+    color: white;
+    margin-right: 8px;
+}
+
+.save-button {
+    background-color: #43A047;
+    color: white;
+}
+
+.form-action {
+    padding: 0px 25px 20px;
+
+    button {
+        flex: 1;
+    }
+}
+
+.new-donor {
+    height: auto;
+    margin-bottom: 5px;
+}
