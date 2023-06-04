@@ -73,7 +73,7 @@ To set up the project environment and run the application, follow the steps belo
      ```
 
 ### 4. Restore the database:
-   - Locate the `database.sql` file provided in the project's `assets/data` folder.
+   - Locate the `database.sql` file provided in the project's `postgresql-database` folder.
    - Use the PostgreSQL command-line tool or a GUI tool (such as pgAdmin) to restore the database from the `database.sql` file. This will create the necessary tables and populate them with sample data.
 
 ### 5. Configure the backend:
