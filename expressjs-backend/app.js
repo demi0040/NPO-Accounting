@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Set up a connection pool with your database credentials
 const pool = new Pool({
-    host: 'localhost',
+    host: 'my-postgres-db',
     port: '5432',
     database: 'play-accounting',
     user: 'postgres',

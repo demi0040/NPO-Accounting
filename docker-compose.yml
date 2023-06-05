@@ -1,26 +1,11 @@
 version: '3'
 
 services:
-  angular:
-    build:
-      context: .
-      dockerfile: Dockerfile.angular
-    ports:
-      - 80:80
-
-  express:
-    build:
-      context: .
-      dockerfile: Dockerfile.expressjs
-    ports:
-      - 3000:3000
-    depends_on:
-      - postgres
-
   postgres:
     build:
       context: .
       dockerfile: Dockerfile.postgres
+    container_name: my-postgres-db
     ports:
       - 5432:5432
     environment:
@@ -31,6 +16,24 @@ services:
       - POSTGRES_PASSWORD=1234
     volumes:
       - ./postgresql-database:/docker-entrypoint-initdb.d
+
+  angular:
+    build:
+      context: .
+      dockerfile: Dockerfile.angular
+    container_name: my-angular-app
+    ports:
+      - 80:80
+
+  express:
+    build:
+      context: .
+      dockerfile: Dockerfile.express
+    container_name: my-express-app
+    ports:
+      - 3000:3000
+    depends_on:
+      - postgres
 
 volumes:
   pgdata:
