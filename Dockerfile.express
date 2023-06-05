@@ -1,0 +1,13 @@
+FROM node:18.16.0
+
+WORKDIR /app
+
+COPY expressjs-backend/package*.json ./
+
+RUN npm ci --quiet
+
+COPY expressjs-backend .
+
+EXPOSE 3000
+
+CMD ["npm", "start"]

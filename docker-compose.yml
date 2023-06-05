@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  angular:
+    build:
+      context: .
+      dockerfile: Dockerfile.angular
+    ports:
+      - 80:80
+
+  express:
+    build:
+      context: .
+      dockerfile: Dockerfile.expressjs
+    ports:
+      - 3000:3000
+    depends_on:
+      - postgres
+
+  postgres:
+    build:
+      context: .
+      dockerfile: Dockerfile.postgres
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=play-accounting
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1234
+    volumes:
+      - ./postgresql-database:/docker-entrypoint-initdb.d
+
+volumes:
+  pgdata:

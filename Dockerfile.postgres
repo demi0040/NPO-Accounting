@@ -1,0 +1,14 @@
+FROM postgres:latest
+
+# Set up a connection pool with your database credentials
+ENV POSTGRES_HOST=localhost
+ENV POSTGRES_PORT=5432
+ENV POSTGRES_DB=play-accounting
+ENV POSTGRES_USER=postgres
+ENV POSTGRES_PASSWORD=1234
+
+# Copy the database SQL file to the Docker container
+COPY ./postgresql-database/database.sql /docker-entrypoint-initdb.d/
+
+# Expose the PostgreSQL port
+EXPOSE 5432
