@@ -151,7 +151,7 @@ CREATE VIEW public.monthly_donations AS
  SELECT date_trunc('month'::text, (incomes.income_date)::timestamp with time zone) AS month,
     sum(incomes.income_amount) AS total_donations
    FROM public.incomes
-  WHERE ((incomes.income_category)::text = 'donation'::text)
+  WHERE ((incomes.income_category)::text = 'Donation'::text)
   GROUP BY (date_trunc('month'::text, (incomes.income_date)::timestamp with time zone))
   ORDER BY (date_trunc('month'::text, (incomes.income_date)::timestamp with time zone));
 
@@ -260,11 +260,9 @@ ALTER TABLE ONLY public.incomes ALTER COLUMN id SET DEFAULT nextval('public.inco
 --
 
 COPY public.donors (id, first_name, last_name, address, postcode, phone, email, donor_area, donor_group, promised_amount, promised_date) FROM stdin;
-7	David	Johnson	789 Oak St	34567	555-9012	david.johnson@example.com	3	1	150	2023-05-19
 9	Michael	Taylor	567 Cedar St	12345	555-6789	michael.taylor@example.com	1	1	300	2023-05-21
 12	Sophia	Wilson	456 Birch St	89012	555-8901	sophia.wilson@example.com	4	2	600	2023-05-24
 13	James	Anderson	789 Spruce St	12345	555-2345	james.anderson@example.com	1	1	700	2023-05-25
-14	Ava	Thomas	234 Ash St	67890	555-6789	ava.thomas@example.com	2	2	800	2023-05-26
 15	William	Harris	567 Oak St	34567	555-0123	william.harris@example.com	3	1	900	2023-05-27
 16	Mia	Clark	890 Elm St	89012	555-3456	mia.clark@example.com	4	2	1000	2023-05-28
 6	Ihsan	Demir	144C Woodridge Crescent	K2B7S9	4386223603	ihsandemir.y@gmail.com	1	1	2000	2023-05-20
@@ -273,6 +271,8 @@ COPY public.donors (id, first_name, last_name, address, postcode, phone, email, 
 8	Emily	Brown	234 Pine St	89012	555-3456	emily.brown@example.com	4	2	250	2023-05-04
 5	John	Doe	123 Main Street	12345	1234567890	johndoe@example.com	2	3	200	2023-05-13
 18	Osman	Kurunc	adress sdf	k1k1k1	4444444444	okuru@ggmail.com	1	2	700	2023-05-26
+14	Ava	Thomas	234 Ash St	67890	555-6789	ava.thomas@example.com	2	2	800	2023-05-17
+7	David	Johnson	789 Oak Stt	34567	555-9012	david.johnson@example.com	2	1	150	2023-05-24
 \.
 
 
