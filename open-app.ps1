@@ -1,3 +1,8 @@
+# Set the path to the script and the corresponding directories
+$scriptPath = Split-Path -Parent $MyInvocation.MyCommand.Path
+$backendPath = Join-Path -Path $scriptPath -ChildPath "expressjs-backend"
+$angularPath = Join-Path -Path $scriptPath -ChildPath "angular-accounting"
+
 # Check if PostgreSQL service is running, and start it if it's not running
 $service = Get-Service -Name postgresql -ErrorAction SilentlyContinue
 if ($service -eq $null) {
@@ -5,19 +10,21 @@ if ($service -eq $null) {
 }
 
 # Navigate to the express backend directory
-$backendPath = "\expressjs-backend"
 Set-Location -Path $backendPath
 
-# Run the express backend using npm start
-Start-Process -FilePath "npm" -ArgumentList "start" -Wait
+# Check if the express server is already running
+$expressRunning = Test-NetConnection -ComputerName localhost -Port 3000 -InformationLevel Quiet
+if (-not $expressRunning) {
+    # Run the express backend using npm start in a new terminal window
+    Start-Process -FilePath "npm" -ArgumentList "start" -WindowStyle Hidden
+}
 
 # Navigate to the angular project directory
-$angularPath = "\angular-accounting"
 Set-Location -Path $angularPath
 
 # Check if the angular app is already running
-$runningApps = Get-Process | Where-Object { $_.MainWindowTitle -match "angular-accounting" }
-if ($runningApps.Count -eq 0) {
+$angularRunning = Get-Process | Where-Object { $_.MainWindowTitle -match "angular-accounting" }
+if ($angularRunning.Count -eq 0) {
     # Run ng build to build the angular project
     Start-Process -FilePath "ng" -ArgumentList "build" -Wait
 
