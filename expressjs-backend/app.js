@@ -439,6 +439,70 @@ app.get("/api/monthly-income-by-source-name", async (req, res) => {
     }
 });
 
+// Montly expense by expense category APIs
+app.get("/api/monthly-expense-by-category", async (req, res) => {
+    try {
+        // Execute a query to retrieve monthly expense by expense category
+        const query = `
+            SELECT * FROM monthly_expenses_by_category
+            ORDER BY month, expense_category
+        `;
+        const result = await pool.query(query);
+        res.json(result.rows);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Error retrieving monthly expense by category");
+    }
+});    
+
+// Montly expense by expense payment method APIs
+app.get("/api/monthly-expense-by-payment-method", async (req, res) => {
+    try {
+        // Execute a query to retrieve monthly expense by expense payment method
+        const query = `
+            SELECT * FROM monthly_expenses_by_payment_method
+            ORDER BY month, payment_method
+        `;
+        const result = await pool.query(query);
+        res.json(result.rows);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Error retrieving monthly expense by payment method");
+    }
+});
+
+// Montly expense by expense name APIs
+app.get("/api/monthly-expense-by-expense-name", async (req, res) => {
+    try {
+        // Execute a query to retrieve monthly expense by expense name
+        const query = `
+            SELECT * FROM monthly_expenses_by_expense_name
+            ORDER BY month, expense_name
+        `;
+        const result = await pool.query(query);
+        res.json(result.rows);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Error retrieving monthly expense by expense name");
+    }
+});
+
+// Montly expense by expense payee information APIs
+app.get("/api/monthly-expense-by-payee", async (req, res) => {
+    try {
+        // Execute a query to retrieve monthly expense by expense payee information
+        const query = `
+            SELECT * FROM monthly_expenses_by_payee_information
+            ORDER BY month, payee_information
+        `;
+        const result = await pool.query(query);
+        res.json(result.rows);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Error retrieving monthly expense by payee information");
+    }
+});
+
 const port = 3000; // Define the port number
 
 app.listen(port, () => {

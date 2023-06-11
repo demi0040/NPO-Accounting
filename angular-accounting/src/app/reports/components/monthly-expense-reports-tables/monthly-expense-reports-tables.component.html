@@ -1,0 +1,138 @@
+<div class="monthly-expense-tables">
+  <div class="expense-category-table">
+    <h2>Monthly Expenses by Category</h2>
+    <ng-container *ngFor="let expenseCategoryData of monthlyExpenseByCategory">
+      <table>
+        <thead>
+          <tr>
+            <th colspan="2" class="month-header">
+              <div class="month-content">{{ expenseCategoryData.month }}</div>
+            </th>
+          </tr>
+          <tr>
+            <th>Expense Category</th>
+            <th>Total Expense Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of expenseCategoryData.data">
+            <td>{{ data.expense_category }}</td>
+            <td>{{ data.total_expense_amount | currency : "CAD" }}</td>
+          </tr>
+          <tr>
+            <td><strong>Total</strong></td>
+            <td>
+              <strong>{{
+                getTotalExpenseAmount(expenseCategoryData.data)
+                  | currency : "CAD"
+              }}</strong>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-container>
+  </div>
+
+  <div class="payment-method-table">
+    <h2>Monthly Expenses by Payment Method</h2>
+    <ng-container
+      *ngFor="let paymentMethodData of monthlyExpenseByPaymentMethod"
+    >
+      <table>
+        <thead>
+          <tr>
+            <th colspan="2" class="month-header">
+              <div class="month-content">{{ paymentMethodData.month }}</div>
+            </th>
+          </tr>
+          <tr>
+            <th>Payment Method</th>
+            <th>Total Expense Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of paymentMethodData.data">
+            <td>{{ data.payment_method }}</td>
+            <td>{{ data.total_expense_amount | currency : "CAD" }}</td>
+          </tr>
+          <tr>
+            <td><strong>Total</strong></td>
+            <td>
+              <strong>{{
+                getTotalExpenseAmount(paymentMethodData.data) | currency : "CAD"
+              }}</strong>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-container>
+  </div>
+
+  <div class="expense-name-table">
+    <h2>Monthly Expenses by Expense Name</h2>
+    <ng-container *ngFor="let expenseNameData of monthlyExpenseByExpenseName">
+      <table>
+        <thead>
+          <tr>
+            <th colspan="2" class="month-header">
+              <div class="month-content">{{ expenseNameData.month }}</div>
+            </th>
+          </tr>
+          <tr>
+            <th>Expense Name</th>
+            <th>Total Expense Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of expenseNameData.data">
+            <td>{{ data.expense_name }}</td>
+            <td>{{ data.total_expense_amount | currency : "CAD" }}</td>
+          </tr>
+          <tr>
+            <td><strong>Total</strong></td>
+            <td>
+              <strong>{{
+                getTotalExpenseAmount(expenseNameData.data) | currency : "CAD"
+              }}</strong>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-container>
+  </div>
+
+  <div class="payee-info-table">
+    <h2>Monthly Expenses by Payee Information</h2>
+    <ng-container
+      *ngFor="let payeeInfoData of monthlyExpenseByPayeeInformation"
+    >
+      <table>
+        <thead>
+          <tr>
+            <th colspan="2" class="month-header">
+              <div class="month-content">{{ payeeInfoData.month }}</div>
+            </th>
+          </tr>
+          <tr>
+            <th>Payee Information</th>
+            <th>Total Expense Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of payeeInfoData.data">
+            <td>{{ data.payee_information }}</td>
+            <td>{{ data.total_expense_amount | currency : "CAD" }}</td>
+          </tr>
+          <tr>
+            <td><strong>Total</strong></td>
+            <td>
+              <strong>{{
+                getTotalExpenseAmount(payeeInfoData.data) | currency : "CAD"
+              }}</strong>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-container>
+  </div>
+</div>

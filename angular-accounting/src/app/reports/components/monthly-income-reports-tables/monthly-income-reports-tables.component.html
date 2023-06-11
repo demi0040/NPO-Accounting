@@ -19,6 +19,16 @@
             <td>{{ data.income_category }}</td>
             <td>{{ data.total_income_amount | currency: 'CAD' }}</td>
           </tr>
+          <tr>
+            <td><strong>Total:</strong></td>
+            <td>
+              <strong>
+                {{
+                  getTotalIncomeAmount(categoryData.data) | currency: 'CAD'
+                }}
+              </strong>
+            </td>
+          </tr>
         </ng-container>
       </tbody>
     </table>
@@ -44,6 +54,16 @@
             <td>{{ data.payment_method }}</td>
             <td>{{ data.total_income_amount | currency: 'CAD' }}</td>
           </tr>
+          <tr>
+            <td><strong>Total:</strong></td>
+            <td>
+              <strong>
+                {{
+                  getTotalIncomeAmount(paymentMethodData.data) | currency: 'CAD'
+                }}
+              </strong>
+            </td>
+          </tr>
         </ng-container>
       </tbody>
     </table>
@@ -68,6 +88,16 @@
           <tr *ngFor="let data of sourceNameData.data">
             <td>{{ data.income_source_name }}</td>
             <td>{{ data.total_income_amount | currency: 'CAD' }}</td>
+          </tr>
+          <tr>
+            <td><strong>Total:</strong></td>
+            <td>
+              <strong>
+                {{
+                  getTotalIncomeAmount(sourceNameData.data) | currency: 'CAD'
+                }}
+              </strong>
+            </td>
           </tr>
         </ng-container>
       </tbody>

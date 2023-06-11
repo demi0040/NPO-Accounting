@@ -1,0 +1,62 @@
+.monthly-expense-tables {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 20px;
+
+  .expense-category-table,
+  .payment-method-table,
+  .expense-name-table,
+  .payee-info-table {
+    width: calc(50% - 20px);
+    margin-bottom: 20px;
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin: 0;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+
+      th,
+      td {
+        padding: 10px;
+        text-align: left;
+        border: 1px solid #ccc;
+        width: 50%;
+      }
+
+      thead {
+        background-color: #f5f5f5;
+      }
+
+      tbody {
+        tr:nth-child(even) {
+          background-color: #f9f9f9;
+        }
+      }
+
+      tr:last-child {
+        td {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+.month-header {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.month-content {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}

@@ -61,4 +61,8 @@ export class MonthlyIncomeReportsTablesComponent implements OnInit {
     return monthName;
   }
 
+  getTotalIncomeAmount(data: any[]): number {
+    return data.reduce((total, income) => total + Number(income.total_income_amount), 0);
+  }
+
 }

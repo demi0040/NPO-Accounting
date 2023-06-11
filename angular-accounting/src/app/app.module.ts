@@ -49,6 +49,7 @@ import { NgChartsModule } from 'ng2-charts';
 import { DonationChartComponentComponent } from './tables-graphs/donation-chart-component/donation-chart-component.component';
 import { PercentageDifferencePipe } from './pipes/percentage-difference.pipe';
 import { MonthlyIncomeReportsTablesComponent } from './reports/components/monthly-income-reports-tables/monthly-income-reports-tables.component';
+import { MonthlyExpenseReportsTablesComponent } from './reports/components/monthly-expense-reports-tables/monthly-expense-reports-tables.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import { MonthlyIncomeReportsTablesComponent } from './reports/components/monthl
     DonationChartComponentComponent,
     DonorGroupTablesComponent,
     PercentageDifferencePipe,
-    MonthlyIncomeReportsTablesComponent
+    MonthlyIncomeReportsTablesComponent,
+    MonthlyExpenseReportsTablesComponent
   ],
   imports: [
     BrowserModule,
