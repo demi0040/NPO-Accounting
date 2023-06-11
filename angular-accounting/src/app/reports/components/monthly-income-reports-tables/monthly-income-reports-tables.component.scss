@@ -1,0 +1,55 @@
+.monthly-income-tables {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.income-category-table,
+.payment-method-table,
+.source-name-table {
+  width: calc(30% - 20px);
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+
+  table {
+    width: 100%;
+
+    th,
+    td {
+      padding: 10px;
+      text-align: left;
+    }
+
+    thead {
+      background-color: #f5f5f5;
+    }
+
+    tbody {
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+    }
+  }
+}
+
+.month-name {
+  text-align: center;
+  font-weight: bold;
+}
+
+.cell-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+}

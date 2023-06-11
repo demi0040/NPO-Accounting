@@ -1,0 +1,76 @@
+<div class="monthly-income-tables">
+  <div class="income-category-table">
+    <h2>Monthly Income by Category</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Income Category</th>
+          <th>Total Income Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let categoryData of monthlyIncomeByCategory">
+          <tr>
+            <td colspan="2" class="month-name">
+              <div class="cell-content">{{ categoryData.month }}</div>
+            </td>
+          </tr>
+          <tr *ngFor="let data of categoryData.data">
+            <td>{{ data.income_category }}</td>
+            <td>{{ data.total_income_amount | currency: 'CAD' }}</td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="payment-method-table">
+    <h2>Monthly Income by Payment Method</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Payment Method</th>
+          <th>Total Income Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let paymentMethodData of monthlyIncomeByPaymentMethod">
+          <tr>
+            <td colspan="2" class="month-name">
+              <div class="cell-content">{{ paymentMethodData.month }}</div>
+            </td>
+          </tr>
+          <tr *ngFor="let data of paymentMethodData.data">
+            <td>{{ data.payment_method }}</td>
+            <td>{{ data.total_income_amount | currency: 'CAD' }}</td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="source-name-table">
+    <h2>Monthly Income by Source Name</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Income Source Name</th>
+          <th>Total Income Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let sourceNameData of monthlyIncomeBySourceName">
+          <tr>
+            <td colspan="2" class="month-name">
+              <div class="cell-content">{{ sourceNameData.month }}</div>
+            </td>
+          </tr>
+          <tr *ngFor="let data of sourceNameData.data">
+            <td>{{ data.income_source_name }}</td>
+            <td>{{ data.total_income_amount | currency: 'CAD' }}</td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+</div>

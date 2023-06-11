@@ -391,6 +391,54 @@ app.get("/api/donors-area-group", async (req, res) => {
     }
 });
 
+// Montly income by income category APIs
+app.get("/api/monthly-income-by-category", async (req, res) => {
+    try {
+        // Execute a query to retrieve monthly income by income category
+        const query = `
+            SELECT * FROM monthly_incomes_by_category
+            ORDER BY month, income_category
+        `;
+        const result = await pool.query(query);
+        res.json(result.rows);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Error retrieving monthly income by category");
+    }
+});
+
+// Montly income by income payment method APIs
+app.get("/api/monthly-income-by-payment-method", async (req, res) => {
+    try {
+        // Execute a query to retrieve monthly income by income payment method
+        const query = `
+            SELECT * FROM monthly_incomes_by_payment_method
+            ORDER BY month, payment_method
+        `;
+        const result = await pool.query(query);
+        res.json(result.rows);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Error retrieving monthly income by payment method");
+    }
+});
+
+// Montly income by income source name APIs
+app.get("/api/monthly-income-by-source-name", async (req, res) => {
+    try {
+        // Execute a query to retrieve monthly income by income source name
+        const query = `
+            SELECT * FROM monthly_incomes_by_income_source
+            ORDER BY month, income_source_name
+        `;
+        const result = await pool.query(query);
+        res.json(result.rows);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Error retrieving monthly income by source name");
+    }
+});
+
 const port = 3000; // Define the port number
 
 app.listen(port, () => {
