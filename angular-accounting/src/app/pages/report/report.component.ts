@@ -17,4 +17,19 @@ export class ReportComponent {
     this._pageTitleService.setPageTitle(newTitle);
   }
 
+  openTable(tableId: string): void {
+    // Hide all table containers
+    const tableContainers = document.querySelectorAll('.table-container');
+    tableContainers.forEach(container => {
+      container.classList.remove('active');
+    });
+
+    // Show the selected table container
+    const selectedTableContainer = document.getElementById(tableId);
+    if (selectedTableContainer) {
+      selectedTableContainer.classList.add('active');
+    }
+  }
+
+
 }

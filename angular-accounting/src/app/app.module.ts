@@ -43,9 +43,11 @@ import { ExpenseTableComponentComponent } from './tables-graphs/expense-table-co
 import { ExpenseChartComponentComponent } from './tables-graphs/expense-chart-component/expense-chart-component.component';
 import { IncomeChartComponentComponent } from './tables-graphs/income-chart-component/income-chart-component.component';
 import { IncomeExpenseComparisonComponentComponent } from './tables-graphs/income-expense-comparison-component/income-expense-comparison-component.component';
+import { DonorGroupTablesComponent } from './reports/components/donor-group-tables/donor-group-tables.component';
 
 import { NgChartsModule } from 'ng2-charts';
 import { DonationChartComponentComponent } from './tables-graphs/donation-chart-component/donation-chart-component.component';
+import { PercentageDifferencePipe } from './pipes/percentage-difference.pipe';
 
 @NgModule({
   declarations: [
@@ -67,7 +69,9 @@ import { DonationChartComponentComponent } from './tables-graphs/donation-chart-
     ExpenseChartComponentComponent,
     IncomeChartComponentComponent,
     IncomeExpenseComparisonComponentComponent,
-    DonationChartComponentComponent
+    DonationChartComponentComponent,
+    DonorGroupTablesComponent,
+    PercentageDifferencePipe
   ],
   imports: [
     BrowserModule,
@@ -93,7 +97,7 @@ import { DonationChartComponentComponent } from './tables-graphs/donation-chart-
     MatCheckboxModule,
     MatSnackBarModule,
     MatGridListModule,
-    NgChartsModule,
+    NgChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

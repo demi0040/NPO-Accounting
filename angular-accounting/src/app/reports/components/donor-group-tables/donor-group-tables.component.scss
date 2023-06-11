@@ -1,0 +1,55 @@
+/* Table Styling */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Table Header Styling */
+.table thead {
+  background-color: #f5f5f5;
+}
+
+.table th {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Table Body Styling */
+.table td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Alternating Row Colors */
+.table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Heading Styling */
+h3 {
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #eaeaea;
+  color: #333;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Overall Container Styling */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.table-container {
+  margin-bottom: 20px;
+}
+
+.negative {
+  color: red;
+}
+
+.positive {
+  color: green;
+}

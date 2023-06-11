@@ -11,7 +11,7 @@ import { DonorDifferenceService } from '../services/donor-difference.service';
 })
 export class DonorTableComponentComponent implements OnInit {
 
-  allColumns: string[] = ['id', 'first_name', 'last_name', 'email', 'phone', 'address', 'postcode', 'donor_area', 'donor_group', 'promised_amount', 'promised_date', 'total_actual_income', 'difference'];
+  allColumns: string[] = ['id', 'first_name', 'last_name', 'email', 'phone', 'address', 'postcode', 'donor_area', 'donor_group', 'promised_amount', 'promised_date', 'total_actual_income', 'difference', 'diff_percentage'];
 
   displayedColumns: string[] = ['first_name', 'last_name', 'donor_area', 'donor_group', 'promised_amount', 'total_actual_income', 'difference'];
 

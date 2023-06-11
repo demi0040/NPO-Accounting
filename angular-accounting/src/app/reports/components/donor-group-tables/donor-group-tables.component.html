@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="table-container" *ngFor="let areaGroup of donorAreaGroups">
+    <h3>Area {{ areaGroup.area }}, Group {{ areaGroup.group }}</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th width="20%">Name</th>
+          <th width="20%">Promised Amount</th>
+          <th width="20%">Total Actual Income</th>
+          <th width="20%">Remaining Percentage</th>
+          <th width="20%">Difference</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let donor of areaGroup.donors">
+          <td>{{ donor.first_name }} {{ donor.last_name }}</td>
+          <td>{{ donor.promised_amount | currency : "CAD" }}</td>
+          <td>{{ donor.total_actual_income | currency : "CAD" }}</td>
+          <td
+            [ngClass]="{
+              positive: donor.difference < 0,
+              negative: donor.difference >= 0
+            }"
+          >
+            {{
+              donor.total_actual_income
+                | percentageDifference : donor.promised_amount
+            }}%
+          </td>
+          <td
+            [ngClass]="{
+              positive: donor.difference < 0,
+              negative: donor.difference >= 0
+            }"
+          >
+            {{ donor.difference | currency : "CAD" }}
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Total:</strong></td>
+          <td>
+            <strong>{{
+              getTotalPromisedAmount(areaGroup.donors) | currency : "CAD"
+            }}</strong>
+          </td>
+          <td>
+            <strong>{{
+              getTotalIncome(areaGroup.donors) | currency : "CAD"
+            }}</strong>
+          </td>
+          <td>
+            <strong>
+              {{
+                getTotalIncome(areaGroup.donors)
+                  | percentageDifference
+                    : getTotalPromisedAmount(areaGroup.donors)
+              }}%
+            </strong>
+          </td>
+          <td>
+            <strong>{{
+              getTotalDifference(areaGroup.donors) | currency : "CAD"
+            }}</strong>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
