@@ -2,6 +2,7 @@ const express = require("express");
 const { Pool } = require("pg");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const path = require('path');
 
 const app = express();
 app.use(cors()); // Enable CORS
@@ -16,6 +17,9 @@ const pool = new Pool({
   user: "ihsan",
   password: "1234",
 });
+
+// Serve the Angular app
+app.use(express.static(path.join(__dirname, '../angular-accounting/dist/angular-accounting')));
 
 // Function to capitalize all letters in a string
 function capitalizeAllLetters(str) {
@@ -538,6 +542,11 @@ app.get("/api/monthly-expense-by-payee", async (req, res) => {
       .status(500)
       .send("Error retrieving monthly expense by payee information");
   }
+});
+
+// For all other routes, return the index.html file
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../angular-accounting/dist/angular-accounting/index.html'));
 });
 
 const port = 3000; // Define the port number
