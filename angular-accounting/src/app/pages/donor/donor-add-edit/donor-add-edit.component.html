@@ -52,7 +52,7 @@
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Date of Promise</mat-label>
-                <input matInput [matDatepicker]="picker" placeholder="Ex. MM/DD/YYYY" formControlName="promised_date">
+                <input matInput [matDatepicker]="picker" placeholder="Ex. MM/DD/YYYY" formControlName="promised_date" required>
                 <mat-hint>MM/DD/YYYY</mat-hint>
                 <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>

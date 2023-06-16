@@ -7,38 +7,44 @@
             <mat-form-field appearance="outline">
                 <mat-label>Income Category</mat-label>
                 <mat-select formControlName="income_category">
-                    <mat-option value="Donation">Donation</mat-option>
-                    <mat-option value="Governmental">Governmental</mat-option>
-                    <mat-option value="Other">Other</mat-option>
+                    <mat-option value="DONATION">DONATION</mat-option>
+                    <mat-option value="GOVERNMENTAL">GOVERNMENTAL</mat-option>
+                    <mat-option value="OTHER">OTHER</mat-option>
                 </mat-select>
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Payment Method</mat-label>
                 <mat-select formControlName="payment_method">
-                    <mat-option value="Cash">Cash</mat-option>
-                    <mat-option value="Bank">Bank</mat-option>
+                    <mat-option value="CASH">CASH</mat-option>
+                    <mat-option value="BANK">BANK</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
 
         <div class="row">
 
-            <ng-container *ngIf="getFormControlValue('income_category') !== 'Donation'">
+            <ng-container *ngIf="getFormControlValue('income_category') !== 'DONATION'">
                 <mat-form-field appearance="outline">
                     <mat-label>Source Name</mat-label>
                     <input matInput placeholder="Source Name" formControlName="income_source_name">
                 </mat-form-field>
             </ng-container>
 
-            <ng-container *ngIf="getFormControlValue('income_category') === 'Donation'">
-                <mat-form-field appearance="outline">
+            <ng-container *ngIf="getFormControlValue('income_category') === 'DONATION'">
+
+                <div class="donor-select">
+                  <mat-form-field appearance="outline">
                     <mat-label>Select Donor</mat-label>
-                    <mat-select formControlName="donor_id" (selectionChange)="updateSourceName()">
-                        <mat-option value="new">Add New Donor</mat-option>
-                        <mat-option *ngFor="let donor of donors" [value]="donor.id">{{ donor.first_name }} {{
-                            donor.last_name }}</mat-option>
-                    </mat-select>
-                </mat-form-field>
+                    <input type="text" matInput formControlName="donor_id" [matAutocomplete]="auto">
+                    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="updateSourceName()">
+                      <mat-option *ngFor="let donor of filteredDonors | async" [value]="donor.id" (onSelectionChange)="updateSourceName()">
+                        {{ donor.first_name }} {{ donor.last_name }}
+                      </mat-option>
+                    </mat-autocomplete>
+                  </mat-form-field>
+                  <div><p>You selected: <strong>{{selectedDonorName}}</strong></p></div>
+                </div>
+
             </ng-container>
 
             <ng-container *ngIf="getFormControlValue('donor_id') === 'new'">

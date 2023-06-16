@@ -12,17 +12,17 @@ export class MonthlyIncomeReportsService {
   constructor(private _http: HttpClient) { }
 
   getMonthlyIncomeByCategory(): Observable<any[]> {
-    const url = `${this._baseUrl}/monthly-income-by-category`;
+    const url = `${this._baseUrl}/monthly-total-incomes-by-category`;
     return this._http.get<any[]>(url);
   }
 
   getMonthlyIncomeByPaymentMethod(): Observable<any[]> {
-    const url = `${this._baseUrl}/monthly-income-by-payment-method`;
+    const url = `${this._baseUrl}/monthly-total-incomes-by-payment-method`;
     return this._http.get<any[]>(url);
   }
 
   getMonthlyIncomeBySourceName(): Observable<any[]> {
-    const url = `${this._baseUrl}/monthly-income-by-source-name`;
+    const url = `${this._baseUrl}/monthly-total-incomes-by-income-source`;
     return this._http.get<any[]>(url);
   }
 }

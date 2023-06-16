@@ -11,8 +11,8 @@
             <mat-form-field appearance="outline">
                 <mat-label>Payment Method</mat-label>
                 <mat-select formControlName="payment_method">
-                    <mat-option value="Cash">Cash</mat-option>
-                    <mat-option value="Bank">Bank</mat-option>
+                    <mat-option value="CASH">CASH</mat-option>
+                    <mat-option value="BANK">BANK</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
@@ -37,7 +37,7 @@
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Date of Expense</mat-label>
-                <input matInput [matDatepicker]="picker" placeholder="Ex. MM/DD/YYYY" formControlName="expense_date">
+                <input matInput [matDatepicker]="picker" placeholder="Ex. MM/DD/YYYY" formControlName="expense_date" required>
                 <mat-hint>MM/DD/YYYY</mat-hint>
                 <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>

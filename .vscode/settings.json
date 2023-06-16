@@ -1,0 +1,14 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "NPO-Postgres",
+            "database": "play-accounting",
+            "username": "ihsan"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}

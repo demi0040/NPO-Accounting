@@ -51,6 +51,7 @@ export class DonorAddEditComponent implements OnInit {
         });
       }
       else {
+        console.log(this.donorForm.value);
         this._donorService.addDonor(this.donorForm.value).subscribe({
           next: (val: any) => {
             this._snackbarService.showSnackbar('Donor added successfully!', 'Success');

@@ -21,12 +21,12 @@ export class IncomeChartComponentComponent implements OnInit {
   getMonthlyIncome() {
     this._monthlyIncomeService.getMonthlyIncomes().subscribe(data => {
 
-      data.forEach((income: { month: Date; total_income: number; }) => {
+      data.forEach((income: { month_year: Date; total_monthly_income: number; }) => {
 
-        const date = new Date(income.month);
+        const date = new Date(income.month_year);
         const month = date.getMonth();
 
-        this.monthlyIncomeData[month] = income.total_income;
+        this.monthlyIncomeData[month] = income.total_monthly_income;
       });
       this.randomize();
     });

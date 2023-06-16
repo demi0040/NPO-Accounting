@@ -11,7 +11,7 @@ export class DonorDifferenceService {
   constructor(private _http: HttpClient) { }
 
   getDonors(): Observable<any> {
-    return this._http.get('http://localhost:3000/api/donors-with-income').pipe(
+    return this._http.get('http://localhost:3000/api/donors-with-incomes').pipe(
       catchError((error) => {
         console.error(error);
         return throwError('Error retrieving donors');

@@ -28,23 +28,23 @@ export class IncomeExpenseComparisonComponentComponent implements OnInit {
   getMonthlyData() {
     this._monthlyIncomeService.getMonthlyIncomes().subscribe(data => {
 
-      data.forEach((income: { month: Date; total_income: number; }) => {
+      data.forEach((income: { month_year: Date; total_monthly_income: number; }) => {
 
-        const date = new Date(income.month);
+        const date = new Date(income.month_year);
         const month = date.getMonth();
 
-        this.monthlyIncomeData[month] = income.total_income;
+        this.monthlyIncomeData[month] = income.total_monthly_income;
       });
     });
 
     this._monthlyExpenseService.getMonthlyExpenses().subscribe(data => {
 
-      data.forEach((expense: { month: Date; total_expense: number; }) => {
+      data.forEach((expense: { month_year: Date; total_monthly_expense: number; }) => {
 
-        const date = new Date(expense.month);
+        const date = new Date(expense.month_year);
         const month = date.getMonth();
 
-        this.monthlyExpenseData[month] = expense.total_expense;
+        this.monthlyExpenseData[month] = expense.total_monthly_expense;
       });
       this.randomize();
     });

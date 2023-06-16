@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DonorAreaGroupService {
 
-  private _url: string = "http://localhost:3000/api/donors-area-group";
+  private _url: string = "http://localhost:3000/api/donors-with-income-details";
 
   constructor(private _http: HttpClient) {}
 

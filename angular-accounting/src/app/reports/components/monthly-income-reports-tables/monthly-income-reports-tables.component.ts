@@ -58,6 +58,7 @@ export class MonthlyIncomeReportsTablesComponent implements OnInit {
     const date = new Date();
     date.setMonth(monthNumber - 1); // Months are zero-based in JavaScript Date object
     const monthName = date.toLocaleString('default', { month: 'long' });
+
     return monthName;
   }
 

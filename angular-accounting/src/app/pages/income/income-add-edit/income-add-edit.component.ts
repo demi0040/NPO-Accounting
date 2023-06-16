@@ -6,6 +6,9 @@ import { SnackbarService } from 'src/app/core/snackbar.service';
 import { DonorService } from 'src/app/services/donor.service';
 import { IncomeService } from 'src/app/services/income.service';
 import { DonorAddEditComponent } from '../../donor/donor-add-edit/donor-add-edit.component';
+import { debounceTime, map, startWith } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-income-add-edit',
@@ -15,6 +18,8 @@ import { DonorAddEditComponent } from '../../donor/donor-add-edit/donor-add-edit
 export class IncomeAddEditComponent {
   incomeForm: FormGroup;
   donors: any[] = [];
+  filteredDonors!: Observable<any[]>;
+  selectedDonorName: string = '';
 
   constructor(
     private _fb: FormBuilder,
@@ -42,6 +47,23 @@ export class IncomeAddEditComponent {
     this.incomeForm.patchValue(this.data);
 
     this.getDonors();
+
+    const donorIdControl = this.incomeForm.get('donor_id');
+    if (donorIdControl) {
+      this.filteredDonors = donorIdControl.valueChanges.pipe(
+        startWith(''),
+        debounceTime(300),
+        map(value => this.filterDonors(value))
+      );
+    }
+  }
+
+  filterDonors(value: string): any[] {
+    const filterValue = value.toLowerCase();
+    return this.donors.filter(donor => {
+      const fullName = `${donor.first_name} ${donor.last_name}`.toLowerCase();
+      return fullName.includes(filterValue);
+    });
   }
 
   getFormControlValue(controlName: string): any {
@@ -91,11 +113,12 @@ export class IncomeAddEditComponent {
   }
 
   updateSourceName() {
-    const donorID = this.incomeForm.get('donorID')?.value;
+    const donorID = this.incomeForm.get('donor_id')?.value;
     const selectedDonor = this.donors.find(donor => donor.id === donorID);
     if (selectedDonor) {
-      const sourceName = `${selectedDonor.firstName} ${selectedDonor.lastName}`;
-      this.incomeForm.patchValue({ sourceName });
+      const income_source_name = `${selectedDonor.first_name} ${selectedDonor.last_name}`;
+      this.incomeForm.patchValue({ income_source_name });
+      this.selectedDonorName = income_source_name;
     }
   }
 }

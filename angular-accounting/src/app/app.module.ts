@@ -33,6 +33,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatGridListModule } from '@angular/material/grid-list';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 import { ConfirmationDialogComponent } from './core/confirmation-dialog/confirmation-dialog.component';
 import { IncomeAddEditComponent } from './pages/income/income-add-edit/income-add-edit.component';
@@ -101,6 +102,7 @@ import { MonthlyExpenseReportsTablesComponent } from './reports/components/month
     MatCheckboxModule,
     MatSnackBarModule,
     MatGridListModule,
+    MatAutocompleteModule,
     NgChartsModule
   ],
   providers: [],

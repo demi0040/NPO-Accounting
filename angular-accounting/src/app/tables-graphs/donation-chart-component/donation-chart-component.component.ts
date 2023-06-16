@@ -21,12 +21,12 @@ export class DonationChartComponentComponent {
   getMonthlyDonation() {
     this._monthlyDonationService.getMonthlyDonations().subscribe(data => {
 
-      data.forEach((donation: { month: Date; total_donations: number; }) => {
+      data.forEach((donation: { month_year: Date; total_monthly_donations: number; }) => {
 
-        const date = new Date(donation.month);
+        const date = new Date(donation.month_year);
         const month = date.getMonth();
 
-        this.monthlyDonationData[month] = donation.total_donations;
+        this.monthlyDonationData[month] = donation.total_monthly_donations;
       });
       this.randomize();
     });

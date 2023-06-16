@@ -59,8 +59,8 @@ export class MonthlyExpenseReportsTablesComponent implements OnInit {
   }
 
   getMonthName(month: string): string {
-    const [year, monthNumber] = month.split('-');
-    const date = new Date(Number(year), Number(monthNumber) - 1, 1);
+    const date = new Date();
+    date.setMonth(Number(month) - 1); // Months are zero-based in JavaScript Date object
     const monthName = date.toLocaleString('default', { month: 'long' });
 
     return monthName;

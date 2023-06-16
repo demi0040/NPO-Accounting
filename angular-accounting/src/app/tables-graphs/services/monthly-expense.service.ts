@@ -11,7 +11,7 @@ export class MonthlyExpenseService {
   constructor(private _http: HttpClient) { }
 
   getMonthlyExpenses(): Observable<any> {
-    return this._http.get('http://localhost:3000/api/monthly-expense')
+    return this._http.get('http://localhost:3000/api/monthly-total-expenses')
       .pipe(
         catchError((error) => {
           console.error(error);

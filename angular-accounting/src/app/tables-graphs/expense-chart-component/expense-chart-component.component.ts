@@ -21,12 +21,12 @@ export class ExpenseChartComponentComponent {
   getMonthlyExpense() {
     this._monthlyExpenseService.getMonthlyExpenses().subscribe(data => {
 
-      data.forEach((expense: { month: Date; total_expense: number; }) => {
+      data.forEach((expense: { month_year: Date; total_monthly_expense: number; }) => {
 
-        const date = new Date(expense.month);
+        const date = new Date(expense.month_year);
         const month = date.getMonth();
 
-        this.monthlyExpenseData[month] = expense.total_expense;
+        this.monthlyExpenseData[month] = expense.total_monthly_expense;
       });
       this.randomize();
     });
