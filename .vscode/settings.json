@@ -8,6 +8,18 @@
             "name": "NPO-Postgres",
             "database": "play-accounting",
             "username": "ihsan"
+        },
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "database": "${workspaceFolder:NPO-Accounting}/sqlite-express-server/data/database.db",
+            "name": "npo-accounting-db"
+        },
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "database": "${workspaceFolder:NPO-Accounting}/sqlite-express-server/data/database.db",
+            "name": "db-accounting"
         }
     ],
     "sqltools.useNodeRuntime": true

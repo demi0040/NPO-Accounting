@@ -3,7 +3,7 @@ FROM node:18.16.0 as build
 
 WORKDIR /app
 
-COPY angular-accounting/package*.json ./
+COPY ./angular-accounting/package*.json ./
 
 RUN npm ci --quiet
 

@@ -1,0 +1,6 @@
+{
+    "dev": {
+      "driver": "sqlite",
+      "filename": "/Users/mustafasarikaya/Developer/NPO-Accounting/sqlite-express-server/data/database.db"
+    }
+  }

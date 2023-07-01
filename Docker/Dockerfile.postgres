@@ -8,10 +8,10 @@ ENV POSTGRES_USER=postgres
 ENV POSTGRES_PASSWORD=1234
 
 # Copy the database SQL file to the Docker container
-COPY ./postgresql-database/database.sql /docker-entrypoint-initdb.d/
+COPY ./postgres-express-server/postgresql-database/database.sql /docker-entrypoint-initdb.d/
 
 # Run the pg_restore command to restore the database
-# RUN pg_restore -U postgres -d NPO-Accounting /docker-entrypoint-initdb.d/database.sql
+RUN pg_restore -U postgres -d NPO-Accounting /docker-entrypoint-initdb.d/database.sql
 
 
 # Expose the PostgreSQL port
