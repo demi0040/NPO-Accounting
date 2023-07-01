@@ -8,7 +8,7 @@ const faker_1 = require("@faker-js/faker");
 const sqlite3_1 = __importDefault(require("sqlite3"));
 function connectDatabase() {
     return new Promise((resolve, reject) => {
-        const db = new sqlite3_1.default.Database('./data/database.db', (error) => {
+        const db = new sqlite3_1.default.Database("./data/database.db", (error) => {
             if (error) {
                 reject(error);
             }
@@ -49,9 +49,21 @@ async function generateFakeData() {
                 let donorArea = faker_1.faker.number.int({ min: 1, max: 5 });
                 let donorGroup = faker_1.faker.number.int({ min: 1, max: 3 });
                 let promisedAmount = faker_1.faker.number.int({ min: 100, max: 1000 });
-                let promisedDate = faker_1.faker.date.between({ from: '2023-01-01', to: '2023-12-31' });
+                let promisedDate = faker_1.faker.date.between({
+                    from: "2023-01-01T00:00:00.000Z",
+                    to: "2024-01-01T00:00:00.000Z",
+                });
                 await run(insertDonorQuery, [
-                    firstName, lastName, address, postcode, phone, email, donorArea, donorGroup, promisedAmount, promisedDate
+                    firstName,
+                    lastName,
+                    address,
+                    postcode,
+                    phone,
+                    email,
+                    donorArea,
+                    donorGroup,
+                    promisedAmount,
+                    promisedDate,
                 ]);
             }
         };
@@ -64,14 +76,27 @@ async function generateFakeData() {
       `;
             for (let i = 0; i < 20; i++) {
                 const expenseName = faker_1.faker.commerce.productName().toUpperCase();
-                const paymentMethod = faker_1.faker.helpers.arrayElement(['CASH', 'BANK']).toUpperCase();
-                const expenseCategory = faker_1.faker.helpers.arrayElement(['FOOD', 'TRANSPORTATION', 'UTILITIES']).toUpperCase();
+                const paymentMethod = faker_1.faker.helpers
+                    .arrayElement(["CASH", "BANK"])
+                    .toUpperCase();
+                const expenseCategory = faker_1.faker.helpers
+                    .arrayElement(["FOOD", "TRANSPORTATION", "UTILITIES"])
+                    .toUpperCase();
                 const payeeInformation = faker_1.faker.company.name().toUpperCase();
-                const expenseAmount = faker_1.faker.number.int({ min: 10, max: 100 });
-                const expenseDate = faker_1.faker.date.between({ from: '2023-01-01', to: '2023-12-31' });
+                const expenseAmount = faker_1.faker.number.int({ min: 500, max: 5000 });
+                const expenseDate = faker_1.faker.date.between({
+                    from: "2023-01-01T00:00:00.000Z",
+                    to: "2024-01-01T00:00:00.000Z",
+                });
                 const expenseDescription = faker_1.faker.lorem.sentence().toUpperCase();
                 await run(insertExpenseQuery, [
-                    expenseName, paymentMethod, expenseCategory, payeeInformation, expenseAmount, expenseDate, expenseDescription
+                    expenseName,
+                    paymentMethod,
+                    expenseCategory,
+                    payeeInformation,
+                    expenseAmount,
+                    expenseDate,
+                    expenseDescription,
                 ]);
             }
         };
@@ -83,25 +108,38 @@ async function generateFakeData() {
         ) VALUES (?, ?, ?, ?, ?, ?, ?)
       `;
             for (let i = 0; i < 20; i++) {
-                const incomeCategory = faker_1.faker.helpers.arrayElement(['SALARY', 'RENT', 'INVESMENT']).toUpperCase();
-                const paymentMethod = faker_1.faker.helpers.arrayElement(['CASH', 'BANK']).toUpperCase();
+                const incomeCategory = faker_1.faker.helpers
+                    .arrayElement(["DONATION", "GOVERNMENTAL", "OTHER"])
+                    .toUpperCase();
+                const paymentMethod = faker_1.faker.helpers
+                    .arrayElement(["CASH", "BANK"])
+                    .toUpperCase();
                 const incomeAmount = faker_1.faker.number.int({ min: 500, max: 5000 });
-                const incomeDate = faker_1.faker.date.between({ from: '2023-01-01', to: '2023-12-31' });
+                const incomeDate = faker_1.faker.date.between({
+                    from: "2023-01-01T00:00:00.000Z",
+                    to: "2024-01-01T00:00:00.000Z",
+                });
                 const incomeSourceName = faker_1.faker.company.name().toUpperCase();
                 const donorId = faker_1.faker.number.int({ min: 1, max: 20 });
                 const description = faker_1.faker.lorem.sentence().toUpperCase();
                 await run(insertIncomeQuery, [
-                    incomeCategory, paymentMethod, incomeAmount, incomeDate, incomeSourceName, donorId, description
+                    incomeCategory,
+                    paymentMethod,
+                    incomeAmount,
+                    incomeDate,
+                    incomeSourceName,
+                    donorId,
+                    description,
                 ]);
             }
         };
         await generateDonors();
         await generateExpenses();
         await generateIncomes();
-        console.log('Fake data generation completed.');
+        console.log("Fake data generation completed.");
     }
     catch (error) {
-        console.error('An error occurred while generating fake data:', error);
+        console.error("An error occurred while generating fake data:", error);
     }
 }
 exports.generateFakeData = generateFakeData;
